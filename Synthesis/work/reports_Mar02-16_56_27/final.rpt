@@ -1,0 +1,51 @@
+
+
+Working Directory = /root/201038012/First_Sem/project/learn/work
+QoS Summary for ADC_SAR1
+==========================================================================================
+Metric                          generic         map             syn_opt         final          
+==========================================================================================
+Slack (ps):                      -297             -16               1               1
+  R2R (ps):                      -297             -16               1               1
+  I2R (ps):                       135             137             128             128
+  R2O (ps):                       -28              66              19              19
+  I2O (ps):                  no_value        no_value        no_value        no_value
+  CG  (ps):                  no_value        no_value        no_value        no_value
+TNS (ps):                       6,901             110               0               0
+  R2R (ps):                     6,874             110               0               0
+  I2R (ps):                         0               0               0               0
+  R2O (ps):                        28               0               0               0
+  I2O (ps):                  no_value        no_value        no_value        no_value
+  CG  (ps):                  no_value        no_value        no_value        no_value
+Failing Paths:                     27              11               0               0
+Cell Area:                      1,678             911             893             893
+Total Cell Area:                1,678             911             893             893
+Leaf Instances:                   156             128             119             119
+Total Instances:                  156             128             119             119
+Utilization (%):                 0.00            0.00            0.00            0.00
+Tot. Net Length (um):        no_value        no_value        no_value        no_value
+Avg. Net Length (um):        no_value        no_value        no_value        no_value
+Route Overflow H (%):        no_value        no_value        no_value        no_value
+Route Overflow V (%):        no_value        no_value        no_value        no_value
+MBCI(%) (bits/gate) :            0.00            0.00            0.00            0.00
+Norm Cong Hotspot Area:
+  Max Cong:                  no_value        no_value        no_value        no_value
+  Tot Cong:                  no_value        no_value        no_value        no_value
+==========================================================================================
+CPU  Runtime (h:m:s):        00:00:04        00:00:03        00:00:03        00:00:00
+Real Runtime (h:m:s):        00:00:16        00:00:02        00:00:04        00:00:01
+CPU  Elapsed (h:m:s):        00:00:07        00:00:10        00:00:13        00:00:13
+Real Elapsed (h:m:s):        00:00:17        00:00:19        00:00:23        00:00:24
+Memory (MB):                   727.11          745.75          740.75          740.75
+==========================================================================================
+==========================================================================================
+Flow Settings:
+==========================================================================================
+Total Runtime (h:m:s): 00:00:23
+Total Memory (MB):     740.75
+Executable Version:    18.10-p003_1
+==========================================================================================
+Total Cell Area =  Cell Area + Physical Cell Area
+Total Instances =  Leaf Instances + Physical Instances
+
+

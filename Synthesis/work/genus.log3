@@ -1,0 +1,485 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2018 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+Version: 18.10-p003_1, built Thu Jun 07 23:53:27 IST 2018
+Options: 
+Date:    Mon Mar 08 09:30:18 2021
+Host:    vlsi-20 (x86_64 w/Linux 2.6.32-696.20.1.el6.x86_64) (6cores*6cpus*1physical cpu*Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz 9216KB) (7929776KB)
+OS:      Red Hat Enterprise Linux Server release 6.9 (Santiago)
+
+Checking out license: Genus_Synthesis
+
+Loading tool scripts...
+
+Finished loading tool scripts (4 seconds elapsed).
+
+WARNING: This version of the tool is 1004 days old.
+@genus:root: 1> ### Template Script for RTL->Gate-Level Flow (generated from GENUS 18.10-p003_1)
+@genus:root: 2> 
+@genus:root: 2> if {[file exists /proc/cpuinfo]} {
+  sh grep "model name" /proc/cpuinfo
+  sh grep "cpu MHz"    /proc/cpuinfo
+}
+model name	: Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz
+model name	: Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz
+model name	: Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz
+model name	: Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz
+model name	: Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz
+model name	: Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz
+cpu MHz		: 800.000
+cpu MHz		: 2801.000
+cpu MHz		: 800.000
+cpu MHz		: 800.000
+cpu MHz		: 800.000
+cpu MHz		: 800.000
+@genus:root: 3> 
+@genus:root: 3> puts "Hostname : [info hostname]"
+Hostname : localhost
+@genus:root: 4> 
+@genus:root: 4> ##############################################################################
+@genus:root: 5> ## Preset global variables and attributes
+@genus:root: 6> ##############################################################################
+@genus:root: 7> 
+@genus:root: 7> 
+@genus:root: 7> set DESIGN ADC_SAR1
+ADC_SAR1
+@genus:root: 8> set GEN_EFF medium
+medium
+@genus:root: 9> set MAP_OPT_EFF high
+high
+@genus:root: 10> set DATE [clock format [clock seconds] -format "%b%d-%T"]
+Mar08-09:30:52
+@genus:root: 11> set _OUTPUTS_PATH outputs_${DATE}
+outputs_Mar08-09:30:52
+@genus:root: 12> set _REPORTS_PATH reports_${DATE}
+reports_Mar08-09:30:52
+@genus:root: 13> set _LOG_PATH logs_${DATE}
+logs_Mar08-09:30:52
+@genus:root: 14> ##set ET_WORKDIR <ET work directory>
+@genus:root: 15> set_db / .init_lib_search_path {../lib}
+  Setting attribute of root '/': 'init_lib_search_path' = ../lib
+1 ../lib
+@genus:root: 16> ##set_db / .script_search_path {. <path>}
+@genus:root: 17> set_db / .init_hdl_search_path {../rtl}
+  Setting attribute of root '/': 'init_hdl_search_path' = ../rtl
+1 ../rtl
+@genus:root: 18> ##Uncomment and specify machine names to enable super-threading.
+@genus:root: 19> ##set_db / .super_thread_servers {<machine names>}
+@genus:root: 20> ##For design size of 1.5M - 5M gates, use 8 to 16 CPUs. For designs > 5M gates, use 16 to 32 CPUs
+@genus:root: 21> ##set_db / .max_cpus_per_server 8
+@genus:root: 22> 
+@genus:root: 22> ##Default undriven/unconnected setting is 'none'.
+@genus:root: 23> ##set_db / .hdl_unconnected_value 0 | 1 | x | none
+@genus:root: 24> 
+@genus:root: 24> set_db / .information_level 9
+  Setting attribute of root '/': 'information_level' = 9
+1 9
+@genus:root: 25> 
+@genus:root: 25> ###############################################################
+@genus:root: 26> ## Library setup
+@genus:root: 27> ###############################################################
+@genus:root: 28> 
+@genus:root: 28> 
+@genus:root: 28> read_libs fast.lib
+
+Threads Configured:3
+Info    : Missing library level attribute. [LBR-516]
+        : slew_derate_from_library not specified in the library, using .lib default of 1. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib, Line 8)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'A' of cell 'ACHCONX2' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'A' of cell 'ADDFHX1' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'B' of cell 'ACHCONX2' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'B' of cell 'ADDFHX1' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'CI' of cell 'ACHCONX2' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'CI' of cell 'ADDFHX1' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'max_fanout' on 'output/inout' pin 'CON' of cell 'ACHCONX2' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'max_fanout' on 'output/inout' pin 'CO' of cell 'ADDFHX1' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'max_fanout' on 'output/inout' pin 'S' of cell 'ADDFHX1' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'A' of cell 'ADDFHX2' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'B' of cell 'ADDFHX2' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'CI' of cell 'ADDFHX2' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'max_fanout' on 'output/inout' pin 'CO' of cell 'ADDFHX2' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'A' of cell 'ADDFHX4' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'B' of cell 'ADDFHX4' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'CI' of cell 'ADDFHX4' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'max_fanout' on 'output/inout' pin 'S' of cell 'ADDFHX2' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'max_fanout' on 'output/inout' pin 'CO' of cell 'ADDFHX4' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'A' of cell 'ADDFHXL' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Could not find an attribute in the library. [LBR-436]
+        : Attribute 'fanout_load' on 'input/inout' pin 'B' of cell 'ADDFHXL' is not defined in the library. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib)
+Info    : Missing a function attribute in the output pin definition. [LBR-518]
+        : Functionality is missing at pin 'Y' for the cell 'HOLDX1'. (File /root/201038012/First_Sem/project/learn/work/../lib/fast.lib, Line 76141)
+
+  Message Summary for Library fast.lib:
+  *************************************
+  Could not find an attribute in the library. [LBR-436]: 2184
+  Missing a function attribute in the output pin definition. [LBR-518]: 1
+  Missing library level attribute. [LBR-516]: 1
+  *************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.100000, 0.000000) in library 'fast.lib'.
+        : The nominal operating condition represents either the nominal PVT values if specified in the library source, or the default PVT values (1.0, 1.0, 1.0).
+Info    : An output library pin lacks a function attribute. [LBR-41]
+        : Output pin 'HOLDX1/Y' has no function.
+        : If the remainder of this library cell's semantic checks are successful, it will be considered as a timing-model (because one of its outputs does not have a valid function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATNSRX1' has invalid (or complex) clock function.
+        : The sequential cell cannot be inferred because its clock function is unknown.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATNSRX1' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATNSRX2' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATNSRX2' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATNSRX4' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATNSRX4' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATNSRXL' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATNSRXL' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATSRX1' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATSRX1' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATSRX2' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATSRX2' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATSRX4' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATSRX4' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATSRXL' has invalid (or complex) clock function.
+Warning : Clock function definition makes cell unusable. [LBR-141]
+        : Sequential cell 'TLATSRXL' has invalid (or complex) clock function.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATNSRX1/Q' is ignored.
+        : Timing sense should never be set with 'rising_edge' or 'falling_edge' timing type.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATNSRX1/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATNSRX2/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATNSRX2/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATNSRX4/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATNSRX4/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATNSRXL/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATNSRXL/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATSRX1/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATSRX1/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATSRX2/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATSRX2/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATSRX4/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATSRX4/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATSRXL/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATSRXL/Q' is ignored.
+@genus:root: 29> ##read_physical -lef <lef file(s)>
+@genus:root: 30> ## Provide either cap_table_file or the qrc_tech_file
+@genus:root: 31> #set_db / .cap_table_file <file>
+@genus:root: 32> ##read_qrc <qrcTechFile name>
+@genus:root: 33> ##generates <signal>_reg[<bit_width>] format
+@genus:root: 34> #set_db / .hdl_array_naming_style %s\[%d\]
+@genus:root: 35> ##
+@genus:root: 36> 
+@genus:root: 36> 
+@genus:root: 36> ##set_db / .lp_insert_clock_gating true
+@genus:root: 37> 
+@genus:root: 37> ####################################################################
+@genus:root: 38> ## Load Design
+@genus:root: 39> ####################################################################
+@genus:root: 40> 
+@genus:root: 40> 
+@genus:root: 40> read_hdl SAR_RTL.v
+            Reading Verilog file '../rtl/SAR_RTL.v'
+@genus:root: 41> elaborate $DESIGN
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATNSRX1/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATNSRX1/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATNSRX2/Q' is ignored.
+Info    : Ignoring specified timing sense. [LBR-170]
+        : The 'timing_sense' definition 'positive_unate' for library pin 'TLATNSRX2/Q' is ignored.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'CI' and 'S' in libcell 'ADDFHX1' is 'pos_unate', but unateness determined from function is 'non_unate'.
+        : The 'timing_sense' attribute will be respected.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'CI' and 'S' in libcell 'ADDFHX1' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'CI' and 'S' in libcell 'ADDFHX1' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFHX1'.
+        : Setting the 'timing_sense' to non_unate.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'CI' and 'S' in libcell 'ADDFHX1' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'B' and 'S' in libcell 'ADDFHX1' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'B' and 'S' in libcell 'ADDFHX1' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'B' and 'S' in libcell 'ADDFHX1' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFHX1'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'B' and 'S' in libcell 'ADDFHX1' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'A' and 'S' in libcell 'ADDFHX1' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'A' and 'S' in libcell 'ADDFHX1' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Setting the maximum print count of this message to 10 if information_level is less than 9. [LBR-161]
+        : To print all the warning messages, set the information_level to 9.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'A' and 'S' in libcell 'ADDFHX1' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'A' and 'S' in libcell 'ADDFHX1'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'A' and 'S' in libcell 'ADDFHX1' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'CI' and 'S' in libcell 'ADDFHX2' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'CI' and 'S' in libcell 'ADDFHX2' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'CI' and 'S' in libcell 'ADDFHX2' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFHX2'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'CI' and 'S' in libcell 'ADDFHX2' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'B' and 'S' in libcell 'ADDFHX2' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'B' and 'S' in libcell 'ADDFHX2' is 'pos_unate', but unateness determined from function is 'non_unate'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'B' and 'S' in libcell 'ADDFHX2' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFHX2'.
+Info    : Mismatch in unateness between 'timing_sense' attribute and the function. [LBR-155]
+        : 'timing_sense' attribute between pin 'B' and 'S' in libcell 'ADDFHX2' is 'neg_unate', but unateness determined from function is 'non_unate'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'A' and 'S' in libcell 'ADDFHX2'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFHX4'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFHX4'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'A' and 'S' in libcell 'ADDFHX4'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFHXL'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFHXL'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'A' and 'S' in libcell 'ADDFHXL'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFX1'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFX1'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'A' and 'S' in libcell 'ADDFX1'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFX2'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFX2'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'A' and 'S' in libcell 'ADDFX2'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'CI' and 'S' in libcell 'ADDFX4'.
+Info    : Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed. [LBR-162]
+        : Non_unate 'timing_sense' inferred between pin 'B' and 'S' in libcell 'ADDFX4'.
+  Library has 324 usable logic and 128 usable sequential lib-cells.
+Info    : Found unusable library cells. [LBR-415]
+        : Library: 'fast.lib', Total cells: 479, Unusable cells: 9.
+	List of unusable cells: 'HOLDX1 TLATNSRX1 TLATNSRX2 TLATNSRX4 TLATNSRXL TLATSRX1 TLATSRX2 TLATSRX4 TLATSRXL .'
+        : For more information, refer to 'Cells Identified as Unusable' in the 'User Guide'. The reason why a cell is considered unusable is stored in the 'unusable_reason' libcell attribute.
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'ADC_SAR1' from file '../rtl/SAR_RTL.v'.
+Warning : Using default parameter value for module elaboration. [CDFG-818]
+        : Elaborating block 'ADC_SAR1' with default parameters value.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'state' [2] doesn't match the width of right hand side [32] in assignment in file '../rtl/SAR_RTL.v' on line 29.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'state' [2] doesn't match the width of right hand side [32] in assignment in file '../rtl/SAR_RTL.v' on line 33.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'state' [2] doesn't match the width of right hand side [32] in assignment in file '../rtl/SAR_RTL.v' on line 35.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'state' [2] doesn't match the width of right hand side [32] in assignment in file '../rtl/SAR_RTL.v' on line 45.
+Info    : Bitwidth mismatch in assignment. [CDFG-372]
+        : Width of left hand side 'state' [2] doesn't match the width of right hand side [32] in assignment in file '../rtl/SAR_RTL.v' on line 50.
+Info    : An implementation was inferred. [CWD-19]
+        : The implementation 'hdl_implementation:GB/equal_unsigned/very_fast' was inferred through the binding 'b1' for the call to synthetic operator 'EQ_UNS_OP' (pin widths: A=2 B=2 Z=1) at line 58 in the file '../rtl/SAR_RTL.v'.
+Info    : Sorted the set of valid implementations for synthetic operator. [CWD-36]
+        : The implementations for the call to synthetic operator 'EQ_UNS_OP' (pin widths: A=2 B=2 Z=1) at line 58 in the file '../rtl/SAR_RTL.v' will be considered in the following order: {'hdl_implementation:GB/equal_unsigned/very_fast' (priority 1)}
+Info    : An implementation was inferred. [CWD-19]
+        : The implementation 'hdl_implementation:GB/equal_unsigned/very_fast' was inferred through the binding 'b1' for the call to synthetic operator 'EQ_UNS_OP' (pin widths: A=2 B=1 Z=1) at line 56 in the file '../rtl/SAR_RTL.v'.
+Info    : Sorted the set of valid implementations for synthetic operator. [CWD-36]
+        : The implementations for the call to synthetic operator 'EQ_UNS_OP' (pin widths: A=2 B=1 Z=1) at line 56 in the file '../rtl/SAR_RTL.v' will be considered in the following order: {'hdl_implementation:GB/equal_unsigned/very_fast' (priority 1)}
+Info    : Done Elaborating Design. [ELAB-3]
+        : Done elaborating 'ADC_SAR1'.
+Checking for analog nets...
+Check completed for analog nets.
+Checking for source RTL...
+Check completed for source RTL.
+        Applying wireload models.
+        Computing net loads.
+UM:  flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:             5             34                                      elaborate
+design:ADC_SAR1
+@genus:root: 42> puts "Runtime & Memory after 'read_hdl'"
+Runtime & Memory after 'read_hdl'
+@genus:root: 43> time_info Elaboration
+stamp 'Elaboration' being created for table 'default'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:03(00:00:00) |  00:00:00(00:00:00) |   0.0(  0.0) |    9:30:21 (Mar08) |  132.4 MB | init
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:31) |  00:00:03(00:00:31) | 100.0(100.0) |    9:30:52 (Mar08) |  199.7 MB | Elaboration
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: default, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+@genus:root: 44> 
+@genus:root: 44> read_vcd ../tb/traces.vcd
+Warning : None of '-static' or '-activity_profile' options given. [VCD-4]
+        : Static analysis will be done on the VCD file '../tb/traces.vcd'.
+        : The '-static' option has been selected by default. To specify explicitly, use at least one of '-static' or '-activity_profile' options.
+
+
+		Setting end time as last timestamp in VCD file
+
+Info    : The '-vcd_module' option has not been specified with the 'read_vcd' command. [POPT-557]
+        : The first scope in the VCD file 'testbench' has been selected for processing.
+        : The first scope encountered in the VCD file has been selected for processing. This may result in lesser coverage if the selected scope does not match up to the design hierarchy to be annotated. To get better coverage, provide the VCD scope name with the '-vcd_module' option.
+Done reading 10% of VCD file...
+Using the end time 8000000.000000
+
+Done reading 20% of VCD file...
+Done reading 30% of VCD file...
+Done reading 40% of VCD file...
+Done reading 50% of VCD file...
+Done reading 60% of VCD file...
+Done reading 70% of VCD file...
+Done reading 80% of VCD file...
+Done reading 90% of VCD file...
+Done reading VCD file...
+
+
+		Making Assertions on Objects in RC Hierarchy
+
+---------------------------------------------------------------
+Asserted primary inputs in design         : 3 (100.00%)
+Total connected primary inputs in design  : 3 (100.00%)
+---------------------------------------------------------------
+Asserted sequential outputs               : 8 (30.77%)
+Total connected sequential outputs        : 26 (100.00%)
+------------------------------------------------------------------------------------
+Total nets in design                      : 257 (100.00%)
+Nets asserted                             : 32 (12.45%)
+Nets with no assertions                   : 225 (87.55%)
+   Constant nets                          : 52 (20.23%)
+------------------------------------------------------------------------------------
+@genus:root: 45> 
+@genus:root: 45> 
+@genus:root: 45> check_design -unresolved
+  Checking the design.
+
+ 	 Check Design Report
+	 -------------------- 
+
+  Unresolved References & Empty Modules
+  ------------------------------------- 
+No unresolved references in design 'ADC_SAR1'
+
+No empty modules in design 'ADC_SAR1'
+
+  Done Checking the design.
+@genus:root: 46> 
+@genus:root: 46> ####################################################################
+@genus:root: 47> ## Constraints Setup
+@genus:root: 48> ####################################################################
+@genus:root: 49> 
+@genus:root: 49> read_sdc test.sdc
+Info    : An external clock is being defined. [TIM-167]
+        : The clock is named 'VCLK'.
+        : An external clock does not directly drive any points within the design, but is only used as a reference for external delays.
+Info    : Removed object. [TUI-58]
+        : Removed external_delay 'external_delay:ADC_SAR1/create_clock_delay_domain_1_clk_R_0'.
+Info    : Removed object. [TUI-58]
+        : Removed external_delay 'external_delay:ADC_SAR1/create_clock_delay_domain_1_clk_F_0'.
+            Reading file '/root/201038012/First_Sem/project/learn/work/test.sdc'
+Statistics for commands executed by read_sdc:
+ "all_inputs"               - successful      2 , failed      0 (runtime  0.00)
+ "all_outputs"              - successful      2 , failed      0 (runtime  0.00)
+ "create_clock"             - successful      2 , failed      0 (runtime  0.00)
+ "current_design"           - successful      1 , failed      0 (runtime  0.00)
+ "get_clocks"               - successful      2 , failed      0 (runtime  0.00)
+ "get_ports"                - successful     11 , failed      0 (runtime  0.00)
+ "set_clock_uncertainty"    - successful      2 , failed      0 (runtime  0.00)
+ "set_input_delay"          - successful      2 , failed      0 (runtime  0.00)
+ "set_input_transition"     - successful      2 , failed      0 (runtime  0.00)
+ "set_load"                 - successful      8 , failed      0 (runtime  0.00)
+ "set_max_fanout"           - successful      1 , failed      0 (runtime  0.00)
+ "set_output_delay"         - successful      2 , failed      0 (runtime  0.00)
+ "set_units"                - successful      2 , failed      0 (runtime  0.00)
+Total runtime 0.0
+@genus:root: 50> 
+@genus:root: 50> puts "The number of exceptions is [llength [vfind "design:$DESIGN" -exception *]]"
+The number of exceptions is 2
+@genus:root: 51> get_*
+invalid command name "get_*"
+@genus:root: 52> get_ports
+0x18
+port:ADC_SAR1/cmp port:ADC_SAR1/clk port:ADC_SAR1/enable port:ADC_SAR1/digital_out[7] port:ADC_SAR1/digital_out[6] port:ADC_SAR1/digital_out[5] port:ADC_SAR1/digital_out[4] port:ADC_SAR1/digital_out[3] port:ADC_SAR1/digital_out[2] port:ADC_SAR1/digital_out[1] port:ADC_SAR1/digital_out[0] port:ADC_SAR1/out_flag port:ADC_SAR1/sample port:ADC_SAR1/value[7] port:ADC_SAR1/value[6] port:ADC_SAR1/value[5] port:ADC_SAR1/value[4] port:ADC_SAR1/value[3] port:ADC_SAR1/value[2] port:ADC_SAR1/value[1] port:ADC_SAR1/value[0] 
+@genus:root: 53> get_pins
+0x19
+hpin:ADC_SAR1/g2/A[7] hpin:ADC_SAR1/g2/A[6] hpin:ADC_SAR1/g2/A[5] hpin:ADC_SAR1/g2/A[4] hpin:ADC_SAR1/g2/A[3] hpin:ADC_SAR1/g2/A[2] hpin:ADC_SAR1/g2/A[1] hpin:ADC_SAR1/g2/A[0] hpin:ADC_SAR1/g2/B[7] hpin:ADC_SAR1/g2/B[6] hpin:ADC_SAR1/g2/B[5] hpin:ADC_SAR1/g2/B[4] hpin:ADC_SAR1/g2/B[3] hpin:ADC_SAR1/g2/B[2] hpin:ADC_SAR1/g2/B[1] hpin:ADC_SAR1/g2/B[0] hpin:ADC_SAR1/g2/Z[7] hpin:ADC_SAR1/g2/Z[6] hpin:ADC_SAR1/g2/Z[5] hpin:ADC_SAR1/g2/Z[4] hpin:ADC_SAR1/g2/Z[3] hpin:ADC_SAR1/g2/Z[2] hpin:ADC_SAR1/g2/Z[1] hpin:ADC_SAR1/g2/Z[0] hpin:ADC_SAR1/g7/A[7] hpin:ADC_SAR1/g7/A[6] hpin:ADC_SAR1/g7/A[5] hpin:ADC_SAR1/g7/A[4] hpin:ADC_SAR1/g7/A[3] hpin:ADC_SAR1/g7/A[2] hpin:ADC_SAR1/g7/A[1] hpin:ADC_SAR1/g7/A[0] hpin:ADC_SAR1/g7/B[7] hpin:ADC_SAR1/g7/B[6] hpin:ADC_SAR1/g7/B[5] hpin:ADC_SAR1/g7/B[4] hpin:ADC_SAR1/g7/B[3] hpin:ADC_SAR1/g7/B[2] hpin:ADC_SAR1/g7/B[1] hpin:ADC_SAR1/g7/B[0] hpin:ADC_SAR1/g7/Z[7] hpin:ADC_SAR1/g7/Z[6] hpin:ADC_SAR1/g7/Z[5] hpin:ADC_SAR1/g7/Z[4] hpin:ADC_SAR1/g7/Z[3] hpin:ADC_SAR1/g7/Z[2] hpin:ADC_SAR1/g7/Z[1] hpin:ADC_SAR1/g7/Z[0] hpin:ADC_SAR1/mux_result_31_9/ctl[1] hpin:ADC_SAR1/mux_result_31_9/ctl[0] hpin:ADC_SAR1/mux_result_31_9/in_0[7] hpin:ADC_SAR1/mux_result_31_9/in_0[6] hpin:ADC_SAR1/mux_result_31_9/in_0[5] hpin:ADC_SAR1/mux_result_31_9/in_0[4] hpin:ADC_SAR1/mux_result_31_9/in_0[3] hpin:ADC_SAR1/mux_result_31_9/in_0[2] hpin:ADC_SAR1/mux_result_31_9/in_0[1] hpin:ADC_SAR1/mux_result_31_9/in_0[0] hpin:ADC_SAR1/mux_result_31_9/in_1[7] hpin:ADC_SAR1/mux_result_31_9/in_1[6] hpin:ADC_SAR1/mux_result_31_9/in_1[5] hpin:ADC_SAR1/mux_result_31_9/in_1[4] hpin:ADC_SAR1/mux_result_31_9/in_1[3] hpin:ADC_SAR1/mux_result_31_9/in_1[2] hpin:ADC_SAR1/mux_result_31_9/in_1[1] hpin:ADC_SAR1/mux_result_31_9/in_1[0] hpin:ADC_SAR1/mux_result_31_9/z[7] hpin:ADC_SAR1/mux_result_31_9/z[6] hpin:ADC_SAR1/mux_result_31_9/z[5] hpin:ADC_SAR1/mux_result_31_9/z[4] hpin:ADC_SAR1/mux_result_31_9/z[3] hpin:ADC_SAR1/mux_result_31_9/z[2] hpin:ADC_SAR1/mux_result_31_9/z[1] hpin:ADC_SAR1/mux_result_31_9/z[0] hpin:ADC_SAR1/mux_temp_31_9/ctl[1] hpin:ADC_SAR1/mux_temp_31_9/ctl[0] hpin:ADC_SAR1/mux_temp_31_9/in_0[7] hpin:ADC_SAR1/mux_temp_31_9/in_0[6] hpin:ADC_SAR1/mux_temp_31_9/in_0[5] hpin:ADC_SAR1/mux_temp_31_9/in_0[4] hpin:ADC_SAR1/mux_temp_31_9/in_0[3] hpin:ADC_SAR1/mux_temp_31_9/in_0[2] hpin:ADC_SAR1/mux_temp_31_9/in_0[1] hpin:ADC_SAR1/mux_temp_31_9/in_0[0] hpin:ADC_SAR1/mux_temp_31_9/in_1[7] hpin:ADC_SAR1/mux_temp_31_9/in_1[6] hpin:ADC_SAR1/mux_temp_31_9/in_1[5] hpin:ADC_SAR1/mux_temp_31_9/in_1[4] hpin:ADC_SAR1/mux_temp_31_9/in_1[3] hpin:ADC_SAR1/mux_temp_31_9/in_1[2] hpin:ADC_SAR1/mux_temp_31_9/in_1[1] hpin:ADC_SAR1/mux_temp_31_9/in_1[0] hpin:ADC_SAR1/mux_temp_31_9/z[7] hpin:ADC_SAR1/mux_temp_31_9/z[6] hpin:ADC_SAR1/mux_temp_31_9/z[5] hpin:ADC_SAR1/mux_temp_31_9/z[4] hpin:ADC_SAR1/mux_temp_31_9/z[3] hpin:ADC_SAR1/mux_temp_31_9/z[2] hpin:ADC_SAR1/mux_temp_31_9/z[1] hpin:ADC_SAR1/mux_temp_31_9/z[0] hpin:ADC_SAR1/mux_state_31_9/ctl[3] hpin:ADC_SAR1/mux_state_31_9/ctl[2] hpin:ADC_SAR1/mux_state_31_9/ctl[1] hpin:ADC_SAR1/mux_state_31_9/ctl[0] hpin:ADC_SAR1/mux_state_31_9/in_0[1] hpin:ADC_SAR1/mux_state_31_9/in_0[0] hpin:ADC_SAR1/mux_state_31_9/in_1[1] hpin:ADC_SAR1/mux_state_31_9/in_1[0] hpin:ADC_SAR1/mux_state_31_9/in_2[1] hpin:ADC_SAR1/mux_state_31_9/in_2[0] hpin:ADC_SAR1/mux_state_31_9/in_3[1] hpin:ADC_SAR1/mux_state_31_9/in_3[0] hpin:ADC_SAR1/mux_state_31_9/z[1] hpin:ADC_SAR1/mux_state_31_9/z[0] hpin:ADC_SAR1/mux_state_28_6/ctl hpin:ADC_SAR1/mux_state_28_6/in_0[1] hpin:ADC_SAR1/mux_state_28_6/in_0[0] hpin:ADC_SAR1/mux_state_28_6/in_1[1] hpin:ADC_SAR1/mux_state_28_6/in_1[0] hpin:ADC_SAR1/mux_state_28_6/z[1] hpin:ADC_SAR1/mux_state_28_6/z[0] pin:ADC_SAR1/g11/in_0 pin:ADC_SAR1/g11/in_1 pin:ADC_SAR1/g11/z pin:ADC_SAR1/g13/in_0 pin:ADC_SAR1/g13/in_1 pin:ADC_SAR1/g13/z pin:ADC_SAR1/g16/in_0 pin:ADC_SAR1/g16/in_1 pin:ADC_SAR1/g16/z pin:ADC_SAR1/g17/in_0 pin:ADC_SAR1/g17/in_1 pin:ADC_SAR1/g17/z pin:ADC_SAR1/g18/in_0 pin:ADC_SAR1/g18/in_1 pin:ADC_SAR1/g18/z pin:ADC_SAR1/g19/in_0 pin:ADC_SAR1/g19/in_1 pin:ADC_SAR1/g19/z pin:ADC_SAR1/g20/in_0 pin:ADC_SAR1/g20/in_1 pin:ADC_SAR1/g20/z pin:ADC_SAR1/g23/in_0 pin:ADC_SAR1/g23/in_1 pin:ADC_SAR1/g23/z pin:ADC_SAR1/g24/in_0 pin:ADC_SAR1/g24/in_1 pin:ADC_SAR1/g24/z pin:ADC_SAR1/g25/in_0 pin:ADC_SAR1/g25/in_1 pin:ADC_SAR1/g25/z pin:ADC_SAR1/g26/in_0 pin:ADC_SAR1/g26/in_1 pin:ADC_SAR1/g26/z pin:ADC_SAR1/g27/in_0 pin:ADC_SAR1/g27/z pin:ADC_SAR1/g28/in_0 pin:ADC_SAR1/g28/z pin:ADC_SAR1/g29/in_0 pin:ADC_SAR1/g29/z pin:ADC_SAR1/g30/in_0 pin:ADC_SAR1/g30/z pin:ADC_SAR1/g31/in_0 pin:ADC_SAR1/g31/z pin:ADC_SAR1/g32/in_0 pin:ADC_SAR1/g32/z pin:ADC_SAR1/g1/in_0 pin:ADC_SAR1/g1/z pin:ADC_SAR1/digital_out_reg[0]/clk pin:ADC_SAR1/digital_out_reg[0]/d pin:ADC_SAR1/digital_out_reg[0]/sena pin:ADC_SAR1/digital_out_reg[0]/aclr pin:ADC_SAR1/digital_out_reg[0]/apre pin:ADC_SAR1/digital_out_reg[0]/srl pin:ADC_SAR1/digital_out_reg[0]/srd pin:ADC_SAR1/digital_out_reg[0]/q pin:ADC_SAR1/digital_out_reg[1]/clk pin:ADC_SAR1/digital_out_reg[1]/d pin:ADC_SAR1/digital_out_reg[1]/sena pin:ADC_SAR1/digital_out_reg[1]/aclr pin:ADC_SAR1/digital_out_reg[1]/apre pin:ADC_SAR1/digital_out_reg[1]/srl pin:ADC_SAR1/digital_out_reg[1]/srd pin:ADC_SAR1/digital_out_reg[1]/q pin:ADC_SAR1/digital_out_reg[2]/clk pin:ADC_SAR1/digital_out_reg[2]/d pin:ADC_SAR1/digital_out_reg[2]/sena pin:ADC_SAR1/digital_out_reg[2]/aclr pin:ADC_SAR1/digital_out_reg[2]/apre pin:ADC_SAR1/digital_out_reg[2]/srl pin:ADC_SAR1/digital_out_reg[2]/srd pin:ADC_SAR1/digital_out_reg[2]/q pin:ADC_SAR1/digital_out_reg[3]/clk pin:ADC_SAR1/digital_out_reg[3]/d pin:ADC_SAR1/digital_out_reg[3]/sena pin:ADC_SAR1/digital_out_reg[3]/aclr pin:ADC_SAR1/digital_out_reg[3]/apre pin:ADC_SAR1/digital_out_reg[3]/srl pin:ADC_SAR1/digital_out_reg[3]/srd pin:ADC_SAR1/digital_out_reg[3]/q ... (186 more objects)
+@genus:root: 54> get_module
+wrong # args: should be "get_module object"
+@genus:root: 55> get_clocks
+0x20
+clock:ADC_SAR1/clk clock:ADC_SAR1/VCLK 
+@genus:root: 56> get_pins *out*
+Warning : Could not find requested search value. [SDC-208] [get_pins]
+        : The 'get_pins' command  cannot find any pins named '*out*'
+        : Use the 'vcd' and 'vls' commands to browse the virtual directories to find the object because the specified name and/or location does not exist.
+@genus:root: 57> cat test.sdc
+1
+@genus:root: 58> get_clocks
+0x22
+clock:ADC_SAR1/clk clock:ADC_SAR1/VCLK 
+@genus:root: 59> exit
+Normal exit.

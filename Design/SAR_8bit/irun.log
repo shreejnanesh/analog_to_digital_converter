@@ -1,0 +1,10 @@
+irun(64): 15.20-s069: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+TOOL:	irun(64)	15.20-s069: Started on Jan 07, 2021 at 18:47:59 IST
+irun
+	sampleandhold.v
+	SARDesignModule.v
+	SARTestbench.v
+	-access rw
+	+gui
+irun: *E,FILEMIS: Cannot find the provided file sampleandhold.v.
+TOOL:	irun(64)	15.20-s069: Exiting on Jan 07, 2021 at 18:47:59 IST  (total: 00:00:00)

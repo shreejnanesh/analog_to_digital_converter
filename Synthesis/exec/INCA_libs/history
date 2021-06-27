@@ -1,0 +1,10 @@
+//
+// File created by:  irun
+// Do not modify this file
+
+s1::(02Mar2021:13:43:14):( irun sampleandhold.v SAR_RTL.v SAR_TB.v )
+s2::(02Mar2021:13:43:34):( irun sampleandhold.v SAR_RTL.v SAR_TB.v -access rw )
+s3::(02Mar2021:13:44:52):( irun sampleandhold.v SAR_RTL.v SAR_TB.v )
+s4::(02Mar2021:13:45:17):( irun sampleandhold.v SAR_RTL.v SAR_TB.v )
+s5::(02Mar2021:13:45:38):( irun sampleandhold.v SAR_RTL.v SAR_TB.v -access rw )
+s6::(02Mar2021:17:00:31):( irun slow.v sampleandhold.v ADC_SAR1_m.v SAR_TB.v -access rw +gui )

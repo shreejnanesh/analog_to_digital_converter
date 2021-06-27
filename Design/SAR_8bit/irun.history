@@ -1,0 +1,4 @@
+s1(25Dec2020:15:49:18):  irun SARDesignModule.v SARTestbench.v 
+s2(25Dec2020:15:49:54):  irun SARDesignModule.v SARTestbench.v -access rw +gui 
+s3(07Jan2021:18:47:03):  irun sampleandhold.v SARDesignModule.v SARTestbench.v -access rw +gui 
+s4(07Jan2021:18:47:59):  irun sampleandhold.v SARDesignModule.v SARTestbench.v -access rw +gui 

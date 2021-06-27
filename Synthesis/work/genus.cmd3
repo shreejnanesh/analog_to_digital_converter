@@ -1,0 +1,39 @@
+# Cadence Genus(TM) Synthesis Solution, Version 18.10-p003_1, built Jun  7 2018 23:53:27
+
+# Date: Mon Mar 08 09:30:18 2021
+# Host: vlsi-20 (x86_64 w/Linux 2.6.32-696.20.1.el6.x86_64) (6cores*6cpus*1physical cpu*Intel(R) Core(TM) i5-8400 CPU @ 2.80GHz 9216KB)
+# OS:   Red Hat Enterprise Linux Server release 6.9 (Santiago)
+
+if {[file exists /proc/cpuinfo]} {
+  sh grep "model name" /proc/cpuinfo
+  sh grep "cpu MHz"    /proc/cpuinfo
+}
+puts "Hostname : [info hostname]"
+set DESIGN ADC_SAR1
+set GEN_EFF medium
+set MAP_OPT_EFF high
+set DATE [clock format [clock seconds] -format "%b%d-%T"]
+set _OUTPUTS_PATH outputs_${DATE}
+set _REPORTS_PATH reports_${DATE}
+set _LOG_PATH logs_${DATE}
+set_db / .init_lib_search_path {../lib}
+set_db / .init_hdl_search_path {../rtl}
+set_db / .information_level 9
+read_libs fast.lib
+read_hdl SAR_RTL.v
+elaborate $DESIGN
+puts "Runtime & Memory after 'read_hdl'"
+time_info Elaboration
+read_vcd ../tb/traces.vcd
+check_design -unresolved
+read_sdc test.sdc
+puts "The number of exceptions is [llength [vfind "design:$DESIGN" -exception *]]"
+get_*
+get_ports
+get_pins
+get_module
+get_clocks
+get_pins *out*
+cat test.sdc
+get_clocks
+exit

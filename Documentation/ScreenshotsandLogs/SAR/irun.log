@@ -1,0 +1,145 @@
+irun(64): 15.20-s069: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
+TOOL:	irun(64)	15.20-s069: Started on Dec 12, 2020 at 16:00:46 IST
+irun
+	ADC_SAR.v
+	ADC_SAR_tb.v
+	-access rw
+	+gui
+
+-------------------------------------
+Relinquished control to SimVision...
+ncsim> 
+ncsim> source /cad/INCISIVE152/tools/inca/files/ncsimrc
+ncsim> database -open waves -into waves.shm -default
+Created default SHM database waves
+ncsim> probe -create -shm testbench.clk testbench.cmp testbench.enable testbench.hold testbench.holdanalog testbench.out_flag testbench.result testbench.sample testbench.value
+Created probe 1
+ncsim> run
+                   0enable=x out_flag=x result=xxxxxxxx sample=x value=xxxxxxxx cmp=x state=xx mask=xxxxxxxx
+                 100enable=0 out_flag=x result=xxxxxxxx sample=x value=xxxxxxxx cmp=x state=xx mask=xxxxxxxx
+                 110enable=0 out_flag=0 result=xxxxxxxx sample=0 value=xxxxxxxx cmp=x state=00 mask=xxxxxxxx
+                 200enable=1 out_flag=0 result=xxxxxxxx sample=0 value=xxxxxxxx cmp=x state=00 mask=xxxxxxxx
+                 210enable=1 out_flag=0 result=xxxxxxxx sample=1 value=xxxxxxxx cmp=x state=01 mask=xxxxxxxx
+                 230enable=1 out_flag=0 result=00000000 sample=0 value=10000000 cmp=0 state=10 mask=10000000
+                 250enable=1 out_flag=0 result=00000000 sample=0 value=01000000 cmp=1 state=10 mask=01000000
+                 270enable=1 out_flag=0 result=01000000 sample=0 value=01100000 cmp=0 state=10 mask=00100000
+                 290enable=1 out_flag=0 result=01000000 sample=0 value=01010000 cmp=0 state=10 mask=00010000
+                 310enable=1 out_flag=0 result=01000000 sample=0 value=01001000 cmp=0 state=10 mask=00001000
+                 330enable=1 out_flag=0 result=01000000 sample=0 value=01000100 cmp=1 state=10 mask=00000100
+                 350enable=1 out_flag=0 result=01000100 sample=0 value=01000110 cmp=1 state=10 mask=00000010
+                 370enable=1 out_flag=0 result=01000110 sample=0 value=01000111 cmp=0 state=10 mask=00000001
+                 390enable=1 out_flag=1 result=01000110 sample=0 value=01000110 cmp=1 state=11 mask=00000000
+                 400enable=0 out_flag=1 result=01000110 sample=0 value=01000110 cmp=1 state=11 mask=00000000
+                 410enable=0 out_flag=0 result=01000110 sample=0 value=01000110 cmp=1 state=00 mask=00000000
+                 420enable=1 out_flag=0 result=01000110 sample=0 value=01000110 cmp=1 state=00 mask=00000000
+                 430enable=1 out_flag=0 result=01000110 sample=1 value=01000110 cmp=1 state=01 mask=00000000
+                 450enable=1 out_flag=0 result=00000000 sample=0 value=10000000 cmp=0 state=10 mask=10000000
+                 470enable=1 out_flag=0 result=00000000 sample=0 value=01000000 cmp=1 state=10 mask=01000000
+                 490enable=1 out_flag=0 result=01000000 sample=0 value=01100000 cmp=0 state=10 mask=00100000
+                 510enable=1 out_flag=0 result=01000000 sample=0 value=01010000 cmp=0 state=10 mask=00010000
+                 530enable=1 out_flag=0 result=01000000 sample=0 value=01001000 cmp=0 state=10 mask=00001000
+                 550enable=1 out_flag=0 result=01000000 sample=0 value=01000100 cmp=1 state=10 mask=00000100
+                 570enable=1 out_flag=0 result=01000100 sample=0 value=01000110 cmp=1 state=10 mask=00000010
+                 590enable=1 out_flag=0 result=01000110 sample=0 value=01000111 cmp=0 state=10 mask=00000001
+                 610enable=1 out_flag=1 result=01000110 sample=0 value=01000110 cmp=1 state=11 mask=00000000
+                 620enable=0 out_flag=1 result=01000110 sample=0 value=01000110 cmp=1 state=11 mask=00000000
+                 630enable=0 out_flag=0 result=01000110 sample=0 value=01000110 cmp=1 state=00 mask=00000000
+                 640enable=1 out_flag=0 result=01000110 sample=0 value=01000110 cmp=1 state=00 mask=00000000
+                 650enable=1 out_flag=0 result=01000110 sample=1 value=01000110 cmp=1 state=01 mask=00000000
+                 670enable=1 out_flag=0 result=00000000 sample=0 value=10000000 cmp=0 state=10 mask=10000000
+                 690enable=1 out_flag=0 result=00000000 sample=0 value=01000000 cmp=1 state=10 mask=01000000
+                 710enable=1 out_flag=0 result=01000000 sample=0 value=01100000 cmp=1 state=10 mask=00100000
+                 730enable=1 out_flag=0 result=01100000 sample=0 value=01110000 cmp=0 state=10 mask=00010000
+                 750enable=1 out_flag=0 result=01100000 sample=0 value=01101000 cmp=1 state=10 mask=00001000
+                 770enable=1 out_flag=0 result=01101000 sample=0 value=01101100 cmp=1 state=10 mask=00000100
+                 790enable=1 out_flag=0 result=01101100 sample=0 value=01101110 cmp=1 state=10 mask=00000010
+                 810enable=1 out_flag=0 result=01101110 sample=0 value=01101111 cmp=0 state=10 mask=00000001
+                 830enable=1 out_flag=1 result=01101110 sample=0 value=01101110 cmp=1 state=11 mask=00000000
+                 840enable=0 out_flag=1 result=01101110 sample=0 value=01101110 cmp=1 state=11 mask=00000000
+                 850enable=0 out_flag=0 result=01101110 sample=0 value=01101110 cmp=1 state=00 mask=00000000
+                 860enable=1 out_flag=0 result=01101110 sample=0 value=01101110 cmp=1 state=00 mask=00000000
+                 870enable=1 out_flag=0 result=01101110 sample=1 value=01101110 cmp=1 state=01 mask=00000000
+                 890enable=1 out_flag=0 result=00000000 sample=0 value=10000000 cmp=0 state=10 mask=10000000
+                 910enable=1 out_flag=0 result=00000000 sample=0 value=01000000 cmp=1 state=10 mask=01000000
+                 930enable=1 out_flag=0 result=01000000 sample=0 value=01100000 cmp=1 state=10 mask=00100000
+                 950enable=1 out_flag=0 result=01100000 sample=0 value=01110000 cmp=0 state=10 mask=00010000
+                 970enable=1 out_flag=0 result=01100000 sample=0 value=01101000 cmp=1 state=10 mask=00001000
+                 990enable=1 out_flag=0 result=01101000 sample=0 value=01101100 cmp=1 state=10 mask=00000100
+                1010enable=1 out_flag=0 result=01101100 sample=0 value=01101110 cmp=1 state=10 mask=00000010
+                1030enable=1 out_flag=0 result=01101110 sample=0 value=01101111 cmp=0 state=10 mask=00000001
+                1050enable=1 out_flag=1 result=01101110 sample=0 value=01101110 cmp=1 state=11 mask=00000000
+                1060enable=0 out_flag=1 result=01101110 sample=0 value=01101110 cmp=1 state=11 mask=00000000
+                1070enable=0 out_flag=0 result=01101110 sample=0 value=01101110 cmp=1 state=00 mask=00000000
+                1080enable=1 out_flag=0 result=01101110 sample=0 value=01101110 cmp=1 state=00 mask=00000000
+                1090enable=1 out_flag=0 result=01101110 sample=1 value=01101110 cmp=1 state=01 mask=00000000
+                1110enable=1 out_flag=0 result=00000000 sample=0 value=10000000 cmp=1 state=10 mask=10000000
+                1130enable=1 out_flag=0 result=10000000 sample=0 value=11000000 cmp=1 state=10 mask=01000000
+                1150enable=1 out_flag=0 result=11000000 sample=0 value=11100000 cmp=0 state=10 mask=00100000
+                1170enable=1 out_flag=0 result=11000000 sample=0 value=11010000 cmp=0 state=10 mask=00010000
+                1190enable=1 out_flag=0 result=11000000 sample=0 value=11001000 cmp=1 state=10 mask=00001000
+                1210enable=1 out_flag=0 result=11001000 sample=0 value=11001100 cmp=1 state=10 mask=00000100
+                1230enable=1 out_flag=0 result=11001100 sample=0 value=11001110 cmp=0 state=10 mask=00000010
+                1250enable=1 out_flag=0 result=11001100 sample=0 value=11001101 cmp=0 state=10 mask=00000001
+                1270enable=1 out_flag=1 result=11001100 sample=0 value=11001100 cmp=1 state=11 mask=00000000
+                1280enable=0 out_flag=1 result=11001100 sample=0 value=11001100 cmp=1 state=11 mask=00000000
+                1290enable=0 out_flag=0 result=11001100 sample=0 value=11001100 cmp=1 state=00 mask=00000000
+                1300enable=1 out_flag=0 result=11001100 sample=0 value=11001100 cmp=1 state=00 mask=00000000
+                1310enable=1 out_flag=0 result=11001100 sample=1 value=11001100 cmp=1 state=01 mask=00000000
+                1330enable=1 out_flag=0 result=00000000 sample=0 value=10000000 cmp=1 state=10 mask=10000000
+                1350enable=1 out_flag=0 result=10000000 sample=0 value=11000000 cmp=1 state=10 mask=01000000
+                1370enable=1 out_flag=0 result=11000000 sample=0 value=11100000 cmp=0 state=10 mask=00100000
+                1390enable=1 out_flag=0 result=11000000 sample=0 value=11010000 cmp=0 state=10 mask=00010000
+                1410enable=1 out_flag=0 result=11000000 sample=0 value=11001000 cmp=1 state=10 mask=00001000
+                1430enable=1 out_flag=0 result=11001000 sample=0 value=11001100 cmp=1 state=10 mask=00000100
+                1450enable=1 out_flag=0 result=11001100 sample=0 value=11001110 cmp=0 state=10 mask=00000010
+                1470enable=1 out_flag=0 result=11001100 sample=0 value=11001101 cmp=0 state=10 mask=00000001
+                1490enable=1 out_flag=1 result=11001100 sample=0 value=11001100 cmp=1 state=11 mask=00000000
+                1500enable=0 out_flag=1 result=11001100 sample=0 value=11001100 cmp=1 state=11 mask=00000000
+                1510enable=0 out_flag=0 result=11001100 sample=0 value=11001100 cmp=1 state=00 mask=00000000
+                1520enable=1 out_flag=0 result=11001100 sample=0 value=11001100 cmp=1 state=00 mask=00000000
+                1530enable=1 out_flag=0 result=11001100 sample=1 value=11001100 cmp=1 state=01 mask=00000000
+                1550enable=1 out_flag=0 result=00000000 sample=0 value=10000000 cmp=1 state=10 mask=10000000
+                1570enable=1 out_flag=0 result=10000000 sample=0 value=11000000 cmp=1 state=10 mask=01000000
+                1590enable=1 out_flag=0 result=11000000 sample=0 value=11100000 cmp=0 state=10 mask=00100000
+                1610enable=1 out_flag=0 result=11000000 sample=0 value=11010000 cmp=0 state=10 mask=00010000
+                1630enable=1 out_flag=0 result=11000000 sample=0 value=11001000 cmp=1 state=10 mask=00001000
+                1650enable=1 out_flag=0 result=11001000 sample=0 value=11001100 cmp=1 state=10 mask=00000100
+                1670enable=1 out_flag=0 result=11001100 sample=0 value=11001110 cmp=0 state=10 mask=00000010
+                1690enable=1 out_flag=0 result=11001100 sample=0 value=11001101 cmp=0 state=10 mask=00000001
+                1710enable=1 out_flag=1 result=11001100 sample=0 value=11001100 cmp=1 state=11 mask=00000000
+                1720enable=0 out_flag=1 result=11001100 sample=0 value=11001100 cmp=1 state=11 mask=00000000
+                1730enable=0 out_flag=0 result=11001100 sample=0 value=11001100 cmp=1 state=00 mask=00000000
+                1740enable=1 out_flag=0 result=11001100 sample=0 value=11001100 cmp=1 state=00 mask=00000000
+                1750enable=1 out_flag=0 result=11001100 sample=1 value=11001100 cmp=1 state=01 mask=00000000
+                1770enable=1 out_flag=0 result=00000000 sample=0 value=10000000 cmp=1 state=10 mask=10000000
+                1790enable=1 out_flag=0 result=10000000 sample=0 value=11000000 cmp=1 state=10 mask=01000000
+                1810enable=1 out_flag=0 result=11000000 sample=0 value=11100000 cmp=0 state=10 mask=00100000
+                1830enable=1 out_flag=0 result=11000000 sample=0 value=11010000 cmp=0 state=10 mask=00010000
+                1850enable=1 out_flag=0 result=11000000 sample=0 value=11001000 cmp=1 state=10 mask=00001000
+                1870enable=1 out_flag=0 result=11001000 sample=0 value=11001100 cmp=1 state=10 mask=00000100
+                1890enable=1 out_flag=0 result=11001100 sample=0 value=11001110 cmp=0 state=10 mask=00000010
+                1910enable=1 out_flag=0 result=11001100 sample=0 value=11001101 cmp=0 state=10 mask=00000001
+                1930enable=1 out_flag=1 result=11001100 sample=0 value=11001100 cmp=1 state=11 mask=00000000
+                1940enable=0 out_flag=1 result=11001100 sample=0 value=11001100 cmp=1 state=11 mask=00000000
+                1950enable=0 out_flag=0 result=11001100 sample=0 value=11001100 cmp=1 state=00 mask=00000000
+                1960enable=1 out_flag=0 result=11001100 sample=0 value=11001100 cmp=1 state=00 mask=00000000
+                1970enable=1 out_flag=0 result=11001100 sample=1 value=11001100 cmp=1 state=01 mask=00000000
+                1990enable=1 out_flag=0 result=00000000 sample=0 value=10000000 cmp=1 state=10 mask=10000000
+                2010enable=1 out_flag=0 result=10000000 sample=0 value=11000000 cmp=1 state=10 mask=01000000
+                2030enable=1 out_flag=0 result=11000000 sample=0 value=11100000 cmp=0 state=10 mask=00100000
+                2050enable=1 out_flag=0 result=11000000 sample=0 value=11010000 cmp=0 state=10 mask=00010000
+                2070enable=1 out_flag=0 result=11000000 sample=0 value=11001000 cmp=1 state=10 mask=00001000
+                2090enable=1 out_flag=0 result=11001000 sample=0 value=11001100 cmp=1 state=10 mask=00000100
+                2110enable=1 out_flag=0 result=11001100 sample=0 value=11001110 cmp=0 state=10 mask=00000010
+                2130enable=1 out_flag=0 result=11001100 sample=0 value=11001101 cmp=0 state=10 mask=00000001
+                2150enable=1 out_flag=1 result=11001100 sample=0 value=11001100 cmp=1 state=11 mask=00000000
+                2160enable=0 out_flag=1 result=11001100 sample=0 value=11001100 cmp=1 state=11 mask=00000000
+                2170enable=0 out_flag=0 result=11001100 sample=0 value=11001100 cmp=1 state=00 mask=00000000
+                2180enable=1 out_flag=0 result=11001100 sample=0 value=11001100 cmp=1 state=00 mask=00000000
+                2190enable=1 out_flag=0 result=11001100 sample=1 value=11001100 cmp=1 state=01 mask=00000000
+Simulation stopped via $stop(1) at time 2200 NS + 0
+ncsim> ^C
+ncsim> exit
+...Regained control from SimVision
+-------------------------------------
+TOOL:	irun(64)	15.20-s069: Exiting on Dec 12, 2020 at 16:02:47 IST  (total: 00:02:01)
